@@ -1,8 +1,9 @@
 from PIL import Image
 
+im = Image.open("screenshot.jpg")
+
 
 def main():
-    im = Image.open("screenshot.jpg")
     print(im.format, im.size, im.mode)
 
     size = (128, 128)
@@ -15,5 +16,11 @@ def main():
     print(newfile.format, newfile.size, newfile.mode)
 
 
+def crop_image():
+    box = (100, 100, 400, 400)
+    region = im.crop(box)
+    region.save("screenshot_cropped.jpg", "JPEG")
+
+
 if __name__ == '__main__':
-    main()
+    crop_image()
